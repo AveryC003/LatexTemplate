@@ -1,0 +1,135 @@
+\ProvidesPackage{EngReport}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Backend %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Formatting %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{anyfontsize}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{geometry}      
+\usepackage{setspace}
+\usepackage[backend=bibtex,style=ieee,sorting=none]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontspec}
+\usepackage{ctable}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Graphics %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Math & Symbols %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{gensymb}
+\usepackage{siunitx}
+\usepackage{mathtools}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Side Comment %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{xcolor}
+\usepackage{marginnote}
+\usepackage[textwidth=2cm]{todonotes}
+\newcounter{mycomment}
+\definecolor{Red}{rgb}{1,0,0}
+\definecolor{Green}{rgb}{0,0,1}
+
+\newcommand{\jx}[1]{\stepcounter{mycomment} \todo[prepend, caption={\textbf{\arabic{mycomment} - JX}}, size=\tiny, linecolor=Red, bordercolor=Red, backgroundcolor=Red!10]{#1}}
+
+\newcommand{\cxh}[1]{\stepcounter{mycomment} \todo[prepend, caption={\textbf{\arabic{mycomment} - CXH}}, size=\tiny, linecolor=Green, bordercolor=Green, backgroundcolor=Green!10]{#1}}
+
+\geometry{letterpaper, portrait,includefoot=true,margin=25mm,top=25mm,bottom=25mm,footskip=0mm} % margin 
+%\fontsize{font size}{vertsize (usually 1.2x)}\selectfont
+\setmainfont{Times New Roman}
+\setlength\lightrulewidth{0.3pt}
+
+% Customized TOC:
+\pagestyle{fancy}
+\fancyhf{} % Clear default headers and footers
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage} % Page number in center of footer
+
+% Customize the table of contents to add a line break before the content
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\setcounter{tocdepth}{3} % Show chapters, sections, and subsections in TOC
+
+% Customize section/chapters with their respective formatting
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter}{2pc}{}
+\titleformat{\section}[hang]{\normalfont\Large\bfseries}{\thesection}{2pc}{}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries}{\thesubsection}{2pc}{}
+
+% INFO:
+\newcommand{\myTitle}{An Analysis of Algorithms for the Optimization of Large-Scale Systems}
+\newcommand{\myName}{John Doe}
+\newcommand{\myDate}{31 August 2015}
+
+
+% Customized ENV:
+\setlength{\cftsubsecindent}{4.7em}
+\setlength{\cftsubsubsecindent}{7em}
+\setlength{\cftbeforesecskip}{1.5ex}  
+\setlength{\cftbeforesubsecskip}{1ex} 
+\setlength{\cftbeforesubsubsecskip}{0.5ex}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{2em}
+\setlength{\marginparwidth}{2cm}
+
+\newenvironment{authorization}
+    {\begin{center}\underline{\textbf{\fontsize{12}{14}\selectfont Authorization}}\end{center}}
+    {}
+\newenvironment{signature}
+    {}
+    {}
+\newenvironment{acknowledge}
+    {\begin{center}\underline{\textbf{\fontsize{12}{14}\selectfont  Acknowledgments}}\end{center}}
+    {}
+\newcommand{\sectionnotitle}[1]{
+    \phantomsection  
+    \addcontentsline{toc}{section}{#1}  
+}
+
+
+\renewcommand{\section}[1]{%
+    \newpage
+    \refstepcounter{section}  
+    \addcontentsline{toc}{section}{Chapter \thesection\text{ } #1}
+    \begin{center}
+        \selectfont CHAPTER \thesection
+    \end{center}
+    \vspace{0.5\baselineskip}
+    \begin{center}
+        \selectfont \uppercase{#1}
+    \end{center}
+    \vspace{\baselineskip}
+}
+
+\newcounter{appendixcounter} 
+\newcommand{\appendixcounter}{\Alph{appendixcounter}}
+\newcommand{\appendixchapter}[1]{
+    \newpage
+    \refstepcounter{appendixcounter}  
+    \addcontentsline{toc}{section}{Appendix \appendixcounter \text{ } #1} 
+    \vspace{0.5\baselineskip}
+    \begin{center}
+        \textbf{Appendix \appendixcounter \quad #1}
+    \end{center}
+    \vspace{0.5\baselineskip}
+    \vspace{\baselineskip}
+}
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\familydefault}{\rmdefault}

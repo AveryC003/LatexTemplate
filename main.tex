@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+% Packages:
+\usepackage{xeCJK}
+\usepackage{EngReport}
+\graphicspath{{Images/}}
+\addbibresource{Ref.bib}
+\onehalfspacing
+
+\begin{document}
+
+% Set page numbering to roman (i, ii, iii...) for preliminary pages
+\pagenumbering{roman}
+\newpage
+\sectionnotitle{Title Page}
+\input{titlePage}
+
+\newpage
+\sectionnotitle{Authorization Page}
+\input{authorizationPage}
+
+\newpage
+\sectionnotitle{Signature Page}
+\input{signaturePage}
+
+\newpage
+\sectionnotitle{Table of Contents}
+\tableofcontents
+
+\newpage
+\sectionnotitle{Acknowledgments}
+\input{acknowledgementsPage}
+
+\newpage
+\sectionnotitle{List of Figures}
+\input{figureLists}
+
+\newpage
+\sectionnotitle{List of Tables}
+\input{tableLists}
+
+\newpage
+\sectionnotitle{Abstract}
+\input{abstract}
+
+
+% ====================================================================
+% ====================================================================
+% ====================================================================
+
+
+% Main Body (Arabic numerals starting from 1)
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1} % Start numbering from 1
+\graphicspath{{Images/}}
+
+
+\section{Introduction}
+    \subsection{Sections}
+    Here are some sample citations. An article by Einstein \cite{einstein} and a book by Dirac \cite{dirac}.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=.2\linewidth]{example-image-a}
+    \vspace{\baselineskip}
+    \textbf{\caption{Concept Image Caption}\label{fig:my_label1}}
+    \end{figure}
+    \subsection{Sections}
+        \subsubsection{Subsections}
+        \subsubsection{Subsections}
+
+    \lipsum[5]
+    
+    Content goes Here \autoref{fig:my_label1} \autoref{fig:my_label2} \autoref{tab:my_label1} \autoref{tab:my_label2} \autoref{equ:equ1}
+    \lipsum[5]
+    
+
+    Content goes Here \autoref{fig:my_label1} \autoref{fig:my_label2} \autoref{tab:my_label1} \autoref{tab:my_label2} \autoref{equ:equ1}
+
+    Content goes Here \autoref{fig:my_label1} \autoref{fig:my_label2} \autoref{tab:my_label1} \autoref{tab:my_label2} \autoref{equ:equ1}
+
+
+ % % % % % % % % % % % % % % % % % % %
+% % % % %  SAMPLE IMAGE   % % % % % %
+% % % % % % % % % % % % % % % % % % %
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.4\linewidth]{example-image-a}
+    \vspace{\baselineskip}
+    \textbf{\caption{Concept Image Caption\label{fig:my_label2}}}
+\end{figure}
+
+% % % % % % % % % % % % % % % % % % % % %
+% % % % %  SAMPLE EQUATIONS   % % % % % %
+% % % % % % % % % % % % % % % % % % % % %
+
+\begin{equation}
+    E = mc^2
+\end{equation}
+\begin{equation}
+    \cos{x} = \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n}}{(2n)!}
+    \label{equ:equ1}
+\end{equation}
+\begin{equation}
+    Q = \frac{EI}{\rho}\frac{\int_0^L {V''(x)}^2 \,dx}{\int_0^L {V(x)}^2 \,dx}
+\end{equation}
+
+Theses are to test the hyperref effects.
+
+\section{Chapter Title}
+\subsection{Sections}
+% % % % % % % % % % % % % % % % % % % % %
+% % % % %  SAMPLE TABLE   % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % %
+
+\begin{table}[ht]
+\centering
+\textbf{\caption{Concept Table Caption\label{tab:my_label1}}}
+\vspace{\baselineskip}
+\begin{tabular}{ccccc}
+ \specialrule{.2em}{.1em}{.1em} 
+ \quad &  Column 1&  Column 2&  Column 3& Column 4 \\
+ \specialrule{.1em}{.05em}{.05em}  
+ Row 1 &  1&  2&  3& 4 \\
+ Row 2 &  1&  2&  3& 4 \\
+ Row 3 &  1&  2&  3& 4 \\
+ Row 4 &  1&  2&  3& 4 \\
+ Row 5 &  1&  2&  3& 4 \\
+ Row 6 &  1&  2&  3& 4 \\
+ Row 7 &  1&  2&  3& 4 \\ 
+ \specialrule{.1em}{.05em}{.05em}  
+ Row 8 &  1&  2&  3& 4 \\ 
+ \specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\end{table}
+
+
+\section{Chapter Title}
+
+\begin{table}[ht]
+\centering
+\textbf{\caption{Concept Table Caption\label{tab:my_label2}}}
+\vspace{\baselineskip}
+\begin{tabular}{ccccc}
+ \specialrule{.2em}{.1em}{.1em} 
+ \quad &  Column 1&  Column 2&  Column 3& Column 4 \\
+ \specialrule{.1em}{.05em}{.05em}  
+ Row 1 &  1&  2&  3& 4 \\
+ Row 2 &  1&  2&  3& 4 \\
+ Row 3 &  1&  2&  3& 4 \\
+ Row 4 &  1&  2&  3& 4 \\
+ Row 5 &  1&  2&  3& 4 \\
+ Row 6 &  1&  2&  3& 4 \\
+ Row 7 &  1&  2&  3& 4 \\ 
+ \specialrule{.1em}{.05em}{.05em}  
+ Row 8 &  1&  2&  3& 4 \\ 
+ \specialrule{.2em}{.1em}{.1em} 
+\end{tabular}
+\end{table}
+
+\section{Chapter Title}
+
+\section{Chapter Title}
+
+\section{Conclusions}
+
+\newpage
+\let\section\relax
+\defbibheading{bibliography}{\section{\fontsize{14}{14}\textbf{Bibliography and References}}}
+\sectionnotitle{Bibliography and References}
+\printbibliography
+
+
+\appendixchapter{Title}
+
+\appendixchapter{Title}
+
+\appendixchapter{Title}
+
+\end{document}
