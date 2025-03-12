@@ -15,14 +15,17 @@
 \usepackage{titling}
 \usepackage{titlesec}
 \usepackage{tocloft}
-\usepackage{geometry}      
+\usepackage{geometry}
 \usepackage{setspace}
 \usepackage[backend=bibtex,style=ieee,sorting=none]{biblatex}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fontspec}
 \usepackage{ctable}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
 \usepackage{indentfirst}
+\usepackage{algorithm2e}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphics %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,12 +79,11 @@
 \newcommand{\myName}{John Doe}
 \newcommand{\myDate}{31 August 2015}
 
-
 % Customized ENV:
 \setlength{\cftsubsecindent}{4.7em}
 \setlength{\cftsubsubsecindent}{7em}
-\setlength{\cftbeforesecskip}{1.5ex}  
-\setlength{\cftbeforesubsecskip}{1ex} 
+\setlength{\cftbeforesecskip}{1.5ex}
+\setlength{\cftbeforesubsecskip}{1ex}
 \setlength{\cftbeforesubsubsecskip}{0.5ex}
 \setlength{\parskip}{1em}
 \setlength{\parindent}{2em}
@@ -97,14 +99,27 @@
     {\begin{center}\underline{\textbf{\fontsize{12}{14}\selectfont  Acknowledgments}}\end{center}}
     {}
 \newcommand{\sectionnotitle}[1]{
-    \phantomsection  
-    \addcontentsline{toc}{section}{#1}  
+    \phantomsection
+    \addcontentsline{toc}{section}{#1}
 }
 
+\newcounter{definition}[subsection]
+\renewcommand{\thedefinition}{\thesubsection.\arabic{definition}}
+\newenvironment{definition}[1]{
+  \refstepcounter{definition}
+  \noindent \textbf{Definition \thedefinition\ }(#1).
+}{\par}
+
+\newcounter{assumption}[subsection]
+\renewcommand{\theassumption}{\thesubsection.\arabic{assumption}}
+\newenvironment{assumption}[1]{
+  \refstepcounter{assumption}
+  \noindent \textbf{Assumption \theassumption\ }(#1).
+}{\par}
 
 \renewcommand{\section}[1]{%
     \newpage
-    \refstepcounter{section}  
+    \refstepcounter{section}
     \addcontentsline{toc}{section}{Chapter \thesection\text{ } #1}
     \begin{center}
         \selectfont CHAPTER \thesection
@@ -116,12 +131,12 @@
     \vspace{\baselineskip}
 }
 
-\newcounter{appendixcounter} 
+\newcounter{appendixcounter}
 \newcommand{\appendixcounter}{\Alph{appendixcounter}}
 \newcommand{\appendixchapter}[1]{
     \newpage
-    \refstepcounter{appendixcounter}  
-    \addcontentsline{toc}{section}{Appendix \appendixcounter \text{ } #1} 
+    \refstepcounter{appendixcounter}
+    \addcontentsline{toc}{section}{Appendix \appendixcounter \text{ } #1}
     \vspace{0.5\baselineskip}
     \begin{center}
         \textbf{Appendix \appendixcounter \quad #1}
@@ -129,7 +144,7 @@
     \vspace{0.5\baselineskip}
     \vspace{\baselineskip}
 }
-
-\renewcommand{\thefigure}{\arabic{figure}}
-\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
 \renewcommand{\familydefault}{\rmdefault}
