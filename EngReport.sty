@@ -12,10 +12,11 @@
 \usepackage{anyfontsize}
 \usepackage{fancyhdr}
 \usepackage{multicol}
+\usepackage{multirow}
 \usepackage{titling}
 \usepackage{titlesec}
 \usepackage{tocloft}
-\usepackage{geometry}
+\usepackage{geometry}      
 \usepackage{setspace}
 \usepackage[backend=bibtex,style=ieee,sorting=none]{biblatex}
 \usepackage[hidelinks]{hyperref}
@@ -26,6 +27,7 @@
 \usepackage{enumitem}
 \usepackage{indentfirst}
 \usepackage{algorithm2e}
+\usepackage{algorithmic}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Graphics %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,7 +41,7 @@
 \usepackage{gensymb}
 \usepackage{siunitx}
 \usepackage{mathtools}
-
+\usepackage{aliascnt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Side Comment %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,7 +76,7 @@
 \titleformat{\section}[hang]{\normalfont\Large\bfseries}{\thesection}{2pc}{}
 \titleformat{\subsection}[hang]{\normalfont\large\bfseries}{\thesubsection}{2pc}{}
 
-% INFO:
+% % INFO:
 \newcommand{\myTitle}{An Analysis of Algorithms for the Optimization of Large-Scale Systems}
 \newcommand{\myName}{John Doe}
 \newcommand{\myDate}{31 August 2015}
@@ -82,44 +84,46 @@
 % Customized ENV:
 \setlength{\cftsubsecindent}{4.7em}
 \setlength{\cftsubsubsecindent}{7em}
-\setlength{\cftbeforesecskip}{1.5ex}
-\setlength{\cftbeforesubsecskip}{1ex}
+\setlength{\cftbeforesecskip}{1.5ex}  
+\setlength{\cftbeforesubsecskip}{1ex} 
 \setlength{\cftbeforesubsubsecskip}{0.5ex}
 \setlength{\parskip}{1em}
 \setlength{\parindent}{2em}
 \setlength{\marginparwidth}{2cm}
 
 \newenvironment{authorization}
-    {\begin{center}\underline{\textbf{\fontsize{12}{14}\selectfont Authorization}}\end{center}}
+    {\begin{center}\underline{\textbf{\fontsize{14}{14}\selectfont Authorization}}\end{center}}
     {}
 \newenvironment{signature}
     {}
     {}
 \newenvironment{acknowledge}
-    {\begin{center}\underline{\textbf{\fontsize{12}{14}\selectfont  Acknowledgments}}\end{center}}
+    {\begin{center}\underline{\textbf{\fontsize{14}{14}\selectfont  Acknowledgments}}\end{center}}
     {}
 \newcommand{\sectionnotitle}[1]{
-    \phantomsection
-    \addcontentsline{toc}{section}{#1}
+    \phantomsection  
+    \addcontentsline{toc}{section}{#1}  
 }
 
 \newcounter{definition}[subsection]
 \renewcommand{\thedefinition}{\thesubsection.\arabic{definition}}
 \newenvironment{definition}[1]{
-  \refstepcounter{definition}
-  \noindent \textbf{Definition \thedefinition\ }(#1).
+  \refstepcounter{definition} 
+  \noindent \textbf{Definition \thedefinition\ }(#1). 
 }{\par}
 
 \newcounter{assumption}[subsection]
 \renewcommand{\theassumption}{\thesubsection.\arabic{assumption}}
 \newenvironment{assumption}[1]{
-  \refstepcounter{assumption}
-  \noindent \textbf{Assumption \theassumption\ }(#1).
+  \refstepcounter{assumption} 
+  \noindent \textbf{Assumption \theassumption\ }(#1). 
 }{\par}
-
+\renewcommand{\footnoterule}{}
 \renewcommand{\section}[1]{%
     \newpage
-    \refstepcounter{section}
+    % \setcounter{figure}{0}
+    % \setcounter{table}{0}
+    \refstepcounter{section}  
     \addcontentsline{toc}{section}{Chapter \thesection\text{ } #1}
     \begin{center}
         \selectfont CHAPTER \thesection
@@ -128,15 +132,15 @@
     \begin{center}
         \selectfont \uppercase{#1}
     \end{center}
-    \vspace{\baselineskip}
+    \vspace{0.5\baselineskip}
 }
 
-\newcounter{appendixcounter}
+\newcounter{appendixcounter} 
 \newcommand{\appendixcounter}{\Alph{appendixcounter}}
 \newcommand{\appendixchapter}[1]{
     \newpage
-    \refstepcounter{appendixcounter}
-    \addcontentsline{toc}{section}{Appendix \appendixcounter \text{ } #1}
+    \refstepcounter{appendixcounter}  
+    \addcontentsline{toc}{section}{Appendix \appendixcounter \text{ } #1} 
     \vspace{0.5\baselineskip}
     \begin{center}
         \textbf{Appendix \appendixcounter \quad #1}
@@ -144,7 +148,18 @@
     \vspace{0.5\baselineskip}
     \vspace{\baselineskip}
 }
+
+\counterwithin{figure}{section}
+\counterwithin{table}{section} 
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{section}.\arabic{table}}
-\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+% \renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\theequation}{\arabic{equation}}
 \renewcommand{\familydefault}{\rmdefault}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\equationautorefname}{Eq.}
+\renewcommand{\AMSautorefname}{Eq.}
+\renewcommand{\figureautorefname}{Fig.}
+\renewcommand{\tableautorefname}{Tab.}
+\renewcommand{\algorithmautorefname}{Algorithm.}
